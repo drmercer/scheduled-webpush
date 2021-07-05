@@ -15,6 +15,11 @@ export const AppHandler = injectable(inject => {
     if (url.pathname === '/register') {
       const body = await bodyAsJson(request);
       return register(url, body);
+    } else if (url.pathname === '/get') {
+      return {
+        body: localStorage.getItem("test") || 'nothing',
+        status: 200,
+      };
     } else {
       return { body: "Not Found", status: 404 };
     }
