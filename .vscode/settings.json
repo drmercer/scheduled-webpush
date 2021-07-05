@@ -1,6 +1,8 @@
 {
   "deno.enable": true,
   "deno.suggest.imports.hosts": {
-    "https://unpkg.com": false
+    "https://danmercer.net": false,
+    "https://unpkg.com": false,
+    "https://deno.land": false
   }
 }
