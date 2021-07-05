@@ -6,17 +6,19 @@ async function handle(request: Request): Promise<Response> {
 
   if (url.pathname === '/slack') {
     const hook = url.searchParams.get('hook');
-    const text = url.searchParams.get('text');
     const delay = Number(url.searchParams.get('delay'));
 
-    if (!hook || !text || !delay) {
+    if (!hook || !delay) {
       return new Response("Bad request", { status: 400 });
     }
 
+    const scheduledAt = new Date().toLocaleString();
     setTimeout(async () => {
-      const success = await sendSlackMessage(hook, text);
+      const sentAt = new Date().toLocaleString();
+      const success = await sendSlackMessage(hook, `${id}: Message scheduled at ${scheduledAt} and sent at ${sentAt}.`);
       console.log(`${id}: fired`, {success});
     }, delay);
+    console.log(`${id}: scheduled`);
 
     return new Response("Scheduled. ID = " + id);
   } else {
