@@ -5,5 +5,5 @@
 # Running locally
 
 ```sh
-docker build -t scheduled-webpush . && docker run -it --init -p 1994:1993 scheduled-webpush
+docker build -t scheduled-webpush . && docker run -it --init -p 1994:80 scheduled-webpush
 ```

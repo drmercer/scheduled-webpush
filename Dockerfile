@@ -5,11 +5,7 @@ FROM denoland/deno:1.11.5
 
 WORKDIR /opt/app
 
-EXPOSE 1993
-
-ENV PORT=1993
-
-USER deno
+ENV PORT=80
 
 COPY deps/* deps/
 RUN deno cache deps/*
