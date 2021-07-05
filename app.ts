@@ -1,4 +1,4 @@
-import { ServerRequest, Response } from "https://deno.land/std@0.100.0/http/server.ts";
+import { ServerRequest, Response } from "./deps/httpserver.ts";
 import { injectable } from "./deps/injector.ts";
 
 export const AppHandler = injectable(() => {

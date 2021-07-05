@@ -11,7 +11,10 @@ ENV PORT=1993
 
 USER deno
 
-COPY . .
+COPY deps/* deps/
+RUN deno cache deps/*
+
+ADD . .
 RUN deno cache main.ts
 
 CMD ["run", "--allow-env", "--allow-net", "main.ts"]
