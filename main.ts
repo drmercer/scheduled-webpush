@@ -4,9 +4,12 @@ import { AppHandler } from "./app.ts";
 import { makeInjector } from './deps/injector.ts';
 
 if (import.meta.main) {
-  const port = 8080;
-  const server = serve({ hostname: 'localhost', port });
-  console.log(`HTTP webserver running.  Access it at:  http://localhost:${port}/`);
+  const port = Number(Deno.env.get("PORT"));
+  if (!port) {
+    throw new Error(`Invalid PORT env variable: ${port}`);
+  }
+  const server = serve({ port });
+  console.log(`HTTP webserver running on port ${port}`);
 
   const inject = makeInjector();
   const handler = inject(AppHandler);
