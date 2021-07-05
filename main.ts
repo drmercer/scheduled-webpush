@@ -20,7 +20,7 @@ if (import.meta.main) {
     }
   });
 
-  const serverType = Deno.args[0];
+  const serverType = Deno.args?.[0];
   if (serverType === 'stdhttp') {
 
     const port = Number(Deno.env.get("PORT"));
