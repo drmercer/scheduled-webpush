@@ -20,5 +20,11 @@ if (import.meta.main) {
 }
 
 async function handleAndRespond(handler: (request: ServerRequest) => Promise<Response>, request: ServerRequest): Promise<void> {
-  await request.respond(await handler(request));
+  try {
+    const res = await handler(request);
+    await request.respond(res);
+  } catch (err) {
+    console.error("Error thrown by handler:", err);
+    await request.respond({ body: "Server Error", status: 500 });
+  }
 }
