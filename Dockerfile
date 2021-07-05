@@ -14,4 +14,4 @@ RUN deno cache deps/*
 COPY . .
 RUN deno cache main.ts
 
-CMD ["run", "--allow-env", "--allow-net", "--location=https://scheduled-webpush.deno.danmercer.net", "main.ts"]
+CMD ["run", "--allow-env", "--allow-net", "--location=https://scheduled-webpush.deno.danmercer.net", "main.ts", "stdhttp"]
