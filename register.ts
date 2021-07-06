@@ -47,14 +47,15 @@ export const RegisterHandler = injectable(inject => {
       };
     }
 
-    const scheduledAt = new Date().toLocaleString();
+    const description = `Scheduled at ${new Date().toLocaleString()} for ${timestamp.toLocaleString()}`;
+
     setTimeout(async () => {
       const sentAt = new Date().toLocaleString();
-      console.log(`${id}: Firing. Scheduled at ${scheduledAt} for ${timestamp.toLocaleString()} (current time is ${sentAt}).`);
+      console.log(`${id}: Firing. ${description} (current time is ${sentAt}).`);
       await fire(id, hook, payload);
     }, delay);
 
-    const message = `${id}: Scheduled at ${scheduledAt}.`;
+    const message = `${id}: ${description}.`;
     console.log(message);
     return {
       body: message,

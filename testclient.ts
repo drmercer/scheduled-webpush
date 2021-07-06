@@ -16,7 +16,7 @@ if (import.meta.main) {
   });
 
   if (res.ok) {
-    console.log("Success");
+    console.log("Success:", await res.text());
   } else {
     console.error("Failed", res, await res.text());
   }
