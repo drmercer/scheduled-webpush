@@ -14,13 +14,13 @@ export const RegisterHandler = injectable(inject => {
     const scheduledAt = new Date().toLocaleString();
     setTimeout(async () => {
       const sentAt = new Date().toLocaleString();
-      const success = await sendSlackMessage(hook, `${id}: Message scheduled at ${scheduledAt} and sent at ${sentAt}.`);
+      const success = await sendSlackMessage(hook, `${id}: Message scheduled at ${scheduledAt} and sent at ${sentAt}. TEST CHANGE AGAIN`);
       console.log(`${id}: fired`, { success });
     }, delay);
     console.log(`${id}: scheduled`);
 
     return {
-      body: `${id}: Scheduled at ${scheduledAt}.`,
+      body: `${id}: Scheduled at ${scheduledAt}. TEST CHANGE AGAIN.`,
       status: 200,
     };
   };
