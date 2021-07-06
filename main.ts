@@ -4,6 +4,12 @@ import { Application } from './deps/oak.ts';
 
 if (import.meta.main) {
 
+  try {
+    console.log(import.meta.url)
+  } catch (err) {
+    console.error(err);
+  }
+
   const inject = makeInjector();
   const handler = inject(AppHandler);
 
